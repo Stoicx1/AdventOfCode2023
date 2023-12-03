@@ -23,8 +23,6 @@ with open('input.txt') as file:
 summTask1 = 0
 summTask2 = 0
 for idx, game_str in enumerate(lines):
-	print()
-	print(f'game {idx+1}')
 	biggestRed   = 0
 	biggestGreen = 0
 	biggestBlue  = 0
@@ -39,7 +37,7 @@ for idx, game_str in enumerate(lines):
 			quantity, color = item.strip().split()
 			event[color] = int(quantity)
 
-			# Task 1
+			# Task 1 - logic
 			if color == 'red' and int(quantity) > maxRed:
 				linePossible = False
 			if color == 'green' and int(quantity) > maxGreen:
@@ -47,7 +45,7 @@ for idx, game_str in enumerate(lines):
 			if color == 'blue' and int(quantity) > maxBlue:
 				linePossible = False
 
-			# Task 2
+			# Task 2 - logic
 			if color == 'red':
 				if biggestRed < int(quantity):
 					biggestRed = int(quantity)
@@ -58,13 +56,13 @@ for idx, game_str in enumerate(lines):
 				if biggestBlue < int(quantity):
 					biggestBlue = int(quantity)
 
+	# Task 1 sum
 	if linePossible:
 		summTask1 = summTask1 + (idx+1)
 
-	print('red: {} green: {} blue: {}'.format(biggestRed, biggestGreen, biggestBlue))
+	# Task 2 sum
 	mul = biggestRed * biggestGreen * biggestBlue
 	summTask2 += mul
-	print(mul)
 
 print()
 print(summTask1)
